@@ -1,31 +1,170 @@
-Kaiteki Voice AssistantKaiteki is a voice-powered onboarding and assistant experience for a digital wellbeing application. This Flutter-based project demonstrates how to build a conversational AI to guide users through setup, collect information, and update their profiles using natural language. The assistant leverages OpenAI's GPT models for understanding and responding to user input, and uses local device storage to persist user data securely.Project DescriptionThe goal of this project is to create a frictionless and accessible onboarding process for the Kaiteki app, which is designed to promote digital wellbeing. The voice assistant helps users (both parents and children) set up their profiles by asking a series of questions. Once onboarding is complete, the assistant remains available to help users update their information, such as changing their name, phone number, or content filter settings, through a simple voice command.ScreenshotsWelcome ScreenVoice SelectionOnboarding In ProgressPost-Onboarding AssistantFeaturesVoice-Driven Onboarding: A step-by-step conversational flow to gather user information like name, phone number, role (parent/child), and digital wellbeing preferences.Natural Language Understanding: Uses OpenAI's GPT-4o-mini to interpret user responses and update profile information.Text-to-Speech (TTS) and Speech-to-Text (STT): Provides a hands-free experience using the device's microphone and speaker.Persistent Local Storage: User data and chat history are saved securely on the local device using flutter_secure_storage.Dynamic User Flows: Different onboarding paths for "parent" and "child" roles.Conversational Profile Updates: After onboarding, users can conversationally request changes to their profile (e.g., "Change my name to John").Project Structurekaiteki-onboarding-AI/
-├── android/          # Android specific files
-├── ios/              # iOS specific files
-├── lib/              # Main Dart source code
-│   ├── main.dart           # App entry point
-│   ├── voice_onboarding.dart # UI and logic for the voice onboarding flow
-│   ├── gpt_assistant_page.dart # UI and logic for the main assistant screen
-│   ├── gpt_service.dart      # Handles communication with the OpenAI API
-│   ├── intent_service.dart   # Processes intents returned by the AI
-│   ├── storage_service.dart  # Manages secure local storage
-│   └── log_service.dart      # Simple logging utility
-├── pubspec.yaml      # Project dependencies and metadata
-└── README.md         # This file
-Tech Stack & DependenciesFramework: FlutterAI Service: OpenAI API (gpt-4o-mini)State Management: StatefulWidgetCore Packages:speech_to_text: For converting user's voice to text.flutter_tts: For converting text replies to voice.http: For making API calls to the OpenAI service.permission_handler: For requesting microphone permissions.flutter_secure_storage: For securely storing user data on the device.shared_preferences: For non-sensitive data storage.Software PrerequisitesBefore you begin, ensure you have the following installed:Flutter SDK: Version 3.8.1 or higher.Dart SDK: Version 3.8.1 or higher.A code editor: Visual Studio Code, Android Studio, or IntelliJ IDEA with the Flutter plugin.For mobile:iOS: Xcode and CocoaPods.Android: Android Studio and Android SDK.An OpenAI API Key.How to Set Up the Project1. Clone the Repositorygit clone [https://github.com/Daksh12207/kaiteki-onboarding-AI.git](https://github.com/Daksh12207/kaiteki-onboarding-AI.git)
+# Kaiteki Voice Assistant
+
+Kaiteki is a voice-powered onboarding and assistant experience for a digital wellbeing application.  
+This Flutter-based project demonstrates how to build a conversational AI that guides users through setup, collects information, and updates their profiles using natural language.
+
+The assistant leverages OpenAI's GPT models for understanding and responding to user input and uses secure local device storage to persist user data.
+
+---
+
+## Project Description
+
+The goal of this project is to create a frictionless and accessible onboarding process for the Kaiteki app, designed to promote digital wellbeing.  
+
+The voice assistant helps users (both parents and children) set up their profiles by asking a series of conversational questions.  
+Once onboarding is complete, the assistant remains available to help users update their information—such as changing their name, phone number, or content filter settings—through simple voice commands.
+
+---
+
+## Features
+
+- **Voice-Driven Onboarding:** Conversational flow to collect user details such as name, phone number, role (parent/child), and wellbeing preferences.  
+- **Natural Language Understanding:** Uses OpenAI GPT-4o-mini to interpret user input and modify stored profile data.  
+- **Text-to-Speech (TTS) and Speech-to-Text (STT):** Provides a hands-free experience using the device’s microphone and speaker.  
+- **Persistent Local Storage:** Securely stores user data and chat history with `flutter_secure_storage`.  
+- **Dynamic User Flows:** Distinct onboarding experiences for parent and child roles.  
+- **Conversational Profile Updates:** Users can update information through natural voice commands (e.g., “Change my name to John”).  
+
+---
+
+
+### Project Structure 
+
+| Path / File | Description |
+| :-- | :-- |
+| `android/` | Android-specific files |
+| `ios/` | iOS-specific files |
+| `lib/` | Main Dart source code |
+|   └─ `main.dart` | App entry point |
+|   └─ `voice_onboarding.dart` | Voice onboarding UI and logic |
+|   └─ `gpt_assistant_page.dart` | Main assistant interface |
+|   └─ `gpt_service.dart` | Handles OpenAI API communication |
+|   └─ `intent_service.dart` | Processes intents from AI responses |
+|   └─ `storage_service.dart` | Secure local storage management |
+|   └─ `log_service.dart` | Logging utility |
+| `pubspec.yaml` | Dependencies and metadata |
+| `README.md` | This file |
+
+
+***
+
+
+
+## Tech Stack and Dependencies
+
+**Framework:** Flutter  
+**AI Service:** OpenAI API (gpt-4o-mini)  
+**State Management:** StatefulWidget  
+
+### Core Packages
+
+- `speech_to_text` – Converts voice to text  
+- `flutter_tts` – Converts text to voice  
+- `http` – Handles API calls to OpenAI  
+- `permission_handler` – Requests microphone permissions  
+- `flutter_secure_storage` – Provides secure local data storage  
+- `shared_preferences` – Manages non-sensitive user preferences  
+
+---
+
+## Software Prerequisites
+
+Before setting up, ensure the following are installed:
+
+- **Flutter SDK** version 3.8.1 or higher  
+- **Dart SDK** version 3.8.1 or higher  
+- **Code Editor:** Visual Studio Code, Android Studio, or IntelliJ IDEA with the Flutter plugin  
+
+**For mobile development:**
+- **iOS:** Xcode and CocoaPods  
+- **Android:** Android Studio and Android SDK  
+- **API Key:** A valid OpenAI API key  
+
+---
+
+## Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Daksh12207/kaiteki-onboarding-AI.git
 cd kaiteki-onboarding-AI
-2. Install DependenciesRun the following command in your terminal to fetch all the necessary packages:flutter pub get
-3. Configure API KeyThis project requires an OpenAI API key to function. The key is hardcoded in the source files, which is not secure for a public repository. Please follow these steps to manage your key safely.A. Create a new file for your API key:Create a new file named api_key.dart inside the lib/ directory:lib/
-├── ...
-├── api_key.dart  <-- Create this file
-└── ...
-B. Add your API key to api_key.dart:Open the newly created api_key.dart and add the following code, replacing "YOUR_OPENAI_API_KEY" with your actual key:// lib/api_key.dart
-const String openAIAPIKey = "YOUR_OPENAI_API_KEY";
-C. Update the source files to use the new key file:Now, open the following files and replace the hardcoded API key with a reference to the openAIAPIKey constant.In lib/gpt_service.dart:Add this import at the top: import 'api_key.dart';Find the GPTService class constructor and change its initialization to use the constant.In lib/voice_onboarding.dart and lib/gpt_assistant_page.dart:Find the line where GPTService is initialized and update it to call the constructor without any arguments: gpt = GPTService();D. Add api_key.dart to .gitignore:To prevent your API key from being committed to your repository, open the .gitignore file at the root of your project and add the following line at the end:# API Keys
+```
+
+
+### 2. Install Dependencies
+
+```bash
+flutter pub get
+```
+
+### 3. Configure API Key
+
+Create a new file for your API key:
+
+```bash
 lib/api_key.dart
-4. Configure Platform-Specific PermissionsThe app requires microphone access. You need to add permission descriptions for iOS and Android.For iOS (ios/Runner/Info.plist):Add the following keys:<key>NSSpeechRecognitionUsageDescription</key>
+```
+
+Add your key inside the file:
+
+```bash
+// lib/api_key.dart
+const String openAIAPIKey = "YOUR_OPENAI_API_KEY";
+```
+
+Update Source Files:
+- Add import 'api_key.dart'; at the top of lib/gpt_service.dart
+- Update any hardcoded API key usage to reference openAIAPIKey
+- Ensure GPTService() uses the constant internally
+
+Ignore Sensitive Files:
+
+Add this to .gitignore:
+# API Keys
+```bash
+lib/api_key.dart
+```
+
+### 4. Configure Platform Permissions
+
+For iOS (ios/Runner/Info.plist):
+```bash
+<key>NSSpeechRecognitionUsageDescription</key>
 <string>This app requires speech recognition to function.</string>
 <key>NSMicrophoneUsageDescription</key>
 <string>This app requires microphone access to listen to your voice commands.</string>
-For Android (android/app/src/main/AndroidManifest.xml):Add the following permission inside the <manifest> tag:<uses-permission android:name="android.permission.RECORD_AUDIO" />
-How to Run and Use the App1. Run the ApplicationConnect a device or start an emulator/simulator, and then run the following command from your project's root directory:flutter run
-2. Using the AppInitial Screen: When the app launches, it will ask if you want to proceed with a voice-based experience.Voice Selection: If you choose "Yes," you'll be presented with a list of available voices for the assistant. You can preview them before making a selection.Onboarding: The voice assistant will welcome you and guide you through a series of questions to set up your profile (name, phone number, etc.). Simply speak your answers when prompted.Assistant Page: Once onboarding is complete, you'll be taken to the main assistant page. Here, you can tap and hold the microphone button to ask questions or make changes to your profile, such as "Update my screen time to 2 hours."Chat History: Your conversation with the assistant is displayed on the screen.
+```
+
+For Android (android/app/src/main/AndroidManifest.xml):
+```bash
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
+```
+
+### Running the Application
+
+Connect a device or start an emulator, then run:
+```bash
+flutter run
+```
+
+### Usage:
+- Initial Screen: The app asks if you’d like to enable a voice-based experience.
+- Voice Selection: Choose an available assistant voice, with preview options.
+- Onboarding: The assistant guides you through setting up your profile. Speak your responses when prompted.
+- Assistant Page: After onboarding, you can interact naturally (e.g., “Update my screen time to 2 hours”).
+- Chat History: Your previous conversations are displayed in the assistant interface.
+
+### Future Enhancements:
+- Add cloud-based profile synchronization
+- Support multiple languages and accents
+- Integrate emotion-aware conversational responses
+- Implement adaptive onboarding using real-time sentiment analysis
+
+### License
+
+This project is licensed under the MIT License.
+
+### Developed using Flutter and OpenAI technologies.
+
+
